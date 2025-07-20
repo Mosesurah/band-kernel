@@ -1,21 +1,34 @@
 [project]
 name = "band-kernel"
-description = ""
-authors = []
+authors = ["Band Kernel Team"]
+description = "A modular DAO governance framework for decentralized organizational management"
 telemetry = false
-cache_dir = "./.cache"
+requirements = []
+[contracts.kernel-registry]
+path = "contracts/kernel-registry.clar"
+depends_on = []
 
-# [contracts.counter]
-# path = "contracts/counter.clar"
+[contracts.kernel-proposals]
+path = "contracts/kernel-proposals.clar"
+depends_on = []
+
+[contracts.kernel-treasury]
+path = "contracts/kernel-treasury.clar"
+depends_on = []
+
+[contracts.kernel-voting]
+path = "contracts/kernel-voting.clar"
+depends_on = []
+
+[repl]
+costs_version = 2
+parser_version = 2
 
 [repl.analysis]
 passes = ["check_checker"]
-check_checker = { trusted_sender = false, trusted_caller = false, callee_filter = false }
 
-# Check-checker settings:
-# trusted_sender: if true, inputs are trusted after tx_sender has been checked.
-# trusted_caller: if true, inputs are trusted after contract-caller has been checked.
-# callee_filter: if true, untrusted data may be passed into a private function without a
-# warning, if it gets checked inside. This check will also propagate up to the
-# caller.
-# More informations: https://www.hiro.so/blog/new-safety-checks-in-clarinet
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
